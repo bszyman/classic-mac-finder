@@ -19,8 +19,10 @@
 
 #import "CCIWindowGripButton.h"
 #import "CCIApplicationStyles.h"
+#import "CCIWindowGripButtonDelegate.h"
 
 @interface CCIWindowGripButton() {
+    id delegate;
     BOOL disabled;
     BOOL whiteOut;
 }
@@ -44,6 +46,32 @@
     }
     
     return self;
+}
+
+- (id)delegate
+{
+    return delegate;
+}
+
+- (void)setDelegate:(id)newDelegate
+{
+    delegate = newDelegate;
+}
+
+#pragma mark - EVENTS
+
+- (void)mouseDragged:(NSEvent *)event
+{
+    NSLog(@"mouseDragged");
+}
+
+- (void)mouseUp:(NSEvent *)event
+{
+    NSPoint pointDraggedTo = [NSEvent mouseLocation];
+    
+    if ([[self delegate] respondsToSelector:@selector(gripButtonDidFinishDraggingToCoordinates:)]) {
+        [[self delegate] gripButtonDidFinishDraggingToCoordinates:pointDraggedTo];
+    }
 }
 
 #pragma mark - DRAWING STATE MODIFIERS

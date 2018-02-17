@@ -95,8 +95,8 @@
                                             self.frame.size.width - 3.0,
                                             self.frame.size.height - 44.0 - 2.0);
         
-        self.scrollView = [[CCIScrollView alloc] initWithFrame:scrollViewFrame];
-        
+        self.scrollView = [[CCIScrollView alloc] initWithFrame:scrollViewFrame
+                                                 andController:self.windowController];
         [self.contentView addSubview:self.scrollView];
         
         NSUInteger iconRow = 0;

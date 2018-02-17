@@ -27,6 +27,7 @@
 #import "CCIClassicFinderWindowController.h"
 
 @interface CCIScrollView() {
+    id delegate;
     BOOL windowIsActive;
     BOOL activateHorizontalScrollbar;
     BOOL activateVerticleScrollbar;
@@ -47,10 +48,13 @@
 
 #pragma mark - INITIALIZATION METHODS
 - (instancetype)initWithFrame:(NSRect)frameRect
+                andController:(CCIClassicFinderWindowController *)wc
 {
     self = [super initWithFrame:frameRect];
     
     if (self) {
+        delegate = wc;
+        
         // Create content view container
         // this view is a container for the actual content view
         // we are wrapping the actual content view in this thing
@@ -109,6 +113,7 @@
         // // Create Grip button
         NSRect gripButtonFrame = NSMakeRect(self.frame.size.width - 15.0, self.frame.size.height - 15.0, 15.0, 15.0);
         CCIWindowGripButton *gripButton = [[CCIWindowGripButton alloc] initWithFrame:gripButtonFrame];
+        [gripButton setDelegate:delegate];
         [self setGripButton:gripButton];
         
         [self addSubview:gripButton];
@@ -119,6 +124,18 @@
     }
     
     return self;
+}
+
+#pragma mark - NON-COMPUTED PROPERTIES
+
+- (id)delegate
+{
+    return delegate;
+}
+
+- (void)setDelegate:(id)newDelegate
+{
+    delegate = newDelegate;
 }
 
 #pragma mark - EVENT METHODS

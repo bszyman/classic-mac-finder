@@ -158,4 +158,24 @@
     [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
 }
 
+#pragma mark - WINDOW GRIP BUTTON DELEGATE METHODS
+
+- (void)gripButtonDidFinishDraggingToCoordinates:(NSPoint)pointDraggedTo
+{
+    CGFloat newWidth = pointDraggedTo.x - self.window.frame.origin.x;
+    CGFloat newHeight = (self.window.frame.origin.y + self.window.frame.size.height) - pointDraggedTo.y;
+    
+    // this because the mac's coordinate system starts in the lower left
+    // we need to reposition the origin coordinate on the y axis
+    // by determining the offset between the current y coord and the new
+    // y coord
+    CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
+    
+    NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, newWidth, newHeight);
+    [[self window] setFrame:newWindowFrame display:YES animate:NO];
+    
+    [[self directoryModel] setWindowDimensions:NSMakeSize(newWidth, newHeight)];
+    [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+}
+
 @end

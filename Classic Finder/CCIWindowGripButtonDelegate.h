@@ -1,9 +1,9 @@
 //
-//  CCIWindowGripButton.h
-//  Classic Scrolling2
+//  CCIWindowGripButtonDelegate.h
+//  Classic Finder
 //
-//  Created by Ben Szymanski on 11/23/17.
-//  Copyright © 2017 Ben Szymanski. All rights reserved.
+//  Created by Ben Szymanski on 2/17/18.
+//  Copyright © 2018 Ben Szymanski. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,15 +17,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@interface CCIWindowGripButton : NSControl
+@protocol CCIWindowGripButtonDelegate <NSObject>
 
-- (id)delegate;
-- (void)setDelegate:(id)newDelegate;
-
-- (void)enableButton;
-- (void)disableButton;
-- (void)disableAndWhiteOutButton;
+@optional
+- (void)gripButtonDidFinishDraggingToCoordinates:(NSPoint)pointDraggedTo;
 
 @end

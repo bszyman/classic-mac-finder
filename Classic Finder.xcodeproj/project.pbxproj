@@ -95,6 +95,7 @@
 		A80A55962026CD400021B414 /* CCIClassicTitlebarDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIClassicTitlebarDelegate.h; sourceTree = "<group>"; };
 		A80A5597202AC0F70021B414 /* CCIScrollContentContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIScrollContentContainer.h; sourceTree = "<group>"; };
 		A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCIScrollContentContainer.m; sourceTree = "<group>"; };
+		A80A56332038056E0021B414 /* CCIWindowGripButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIWindowGripButtonDelegate.h; sourceTree = "<group>"; };
 		A885B1C91E59457100F1AB96 /* Classic Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Classic Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A885B1CC1E59457100F1AB96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A885B1CD1E59457100F1AB96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 				A805A861200343CC00274577 /* CFRFileSystemUtils.h */,
 				A805A862200343CC00274577 /* CFRFileSystemUtils.m */,
 				A80A5577202033ED0021B414 /* ScratchCode.txt */,
+				A80A56332038056E0021B414 /* CCIWindowGripButtonDelegate.h */,
 				A80A55962026CD400021B414 /* CCIClassicTitlebarDelegate.h */,
 			);
 			path = "Classic Finder";
