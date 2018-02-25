@@ -22,6 +22,7 @@
 @protocol CCIWindowGripButtonDelegate <NSObject>
 
 @optional
+- (void)gripButtonIsDraggingToCoordinates:(NSPoint)pointDraggedTo;
 - (void)gripButtonDidFinishDraggingToCoordinates:(NSPoint)pointDraggedTo;
 
 @end

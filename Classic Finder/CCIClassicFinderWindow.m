@@ -176,10 +176,6 @@
             display:flag
             animate:animateFlag];
     
-    NSLog(@"setFrame:display:animate");
-    
-    //[[self contentView] setFrame:frameRect];
-    
     // Update Title Bar
     NSRect titlebarFrame = NSMakeRect(0.0,
                                       0.0,

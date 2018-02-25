@@ -60,6 +60,15 @@
 
 #pragma mark - EVENTS
 
+- (void)mouseDragged:(NSEvent *)event
+{
+    NSPoint pointDraggedTo = [NSEvent mouseLocation];
+    
+    if ([[self delegate] respondsToSelector:@selector(gripButtonIsDraggingToCoordinates:)]) {
+        [[self delegate] gripButtonIsDraggingToCoordinates:pointDraggedTo];
+    }
+}
+
 - (void)mouseUp:(NSEvent *)event
 {
     NSPoint pointDraggedTo = [NSEvent mouseLocation];
