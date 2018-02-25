@@ -126,6 +126,83 @@
     return self;
 }
 
+ - (void)setFrame:(NSRect)frame
+{
+    [super setFrame: frame];
+    
+    // Update Content View Container Frame
+    NSRect contentViewContainerFrame = NSMakeRect(0.0,
+                                                  1.0,
+                                                  frame.size.width,
+                                                  (frame.size.height - 1.0));
+    [[self contentViewContainer] setFrame:contentViewContainerFrame];
+    
+    // Update Content View Frame
+    // We will update the minimum width and/or height
+    // of this view if it's current minimum w/h are
+    // less than the new w/h.
+
+    NSRect contentViewFrame = [[self contentView] frame];
+    
+    if (contentViewFrame.size.width < frame.size.width) {
+        contentViewFrame = NSMakeRect(contentViewFrame.origin.x,
+                                      contentViewFrame.origin.y,
+                                      frame.size.width,
+                                      contentViewFrame.size.height);
+    }
+    
+    if (contentViewFrame.size.height < frame.size.height) {
+        contentViewFrame = NSMakeRect(contentViewFrame.origin.x,
+                                      contentViewFrame.origin.y,
+                                      contentViewFrame.size.width,
+                                      (frame.size.height - 1.0));
+    }
+    
+    [[self contentView] setFrame:contentViewFrame];
+
+    
+    // // Calculate scroll travel distances
+    CGFloat scrollableDistanceW = (contentViewFrame.size.width > frame.size.width) ? (contentViewFrame.size.width - frame.size.width + 16.0) : 0.0;
+    CGFloat scrollableDistanceH = (contentViewFrame.size.height > frame.size.height) ? (contentViewFrame.size.height - frame.size.height + 16.0) : 0.0;
+    
+    NSSize scrollableDistance = NSMakeSize(scrollableDistanceW, scrollableDistanceH);
+    [self setScrollableDistance:scrollableDistance];
+    
+    //
+    CGFloat leftButtonWidth = 16.0;
+    CGFloat rightButtonWidth = 16.0;
+    CGFloat scrollerMidWidth = (16.0/2.0);
+    CGFloat combinedNegativeWidth = leftButtonWidth + rightButtonWidth + scrollerMidWidth;
+    
+    CGFloat horizontalScrollInterval = (contentViewFrame.size.width > frame.size.width) ? (round(contentViewFrame.size.width - combinedNegativeWidth)) : 0.0;
+    
+    CGFloat verticalScrollInterval = (contentViewFrame.size.height > frame.size.height) ? (contentViewFrame.size.height - frame.size.height) : 0.0;
+    
+    NSSize scrollIntervalSize = NSMakeSize(horizontalScrollInterval, verticalScrollInterval);
+    [self setScrollIntervalSize:scrollIntervalSize];
+    
+    // // Create scrollbar controls
+    
+    NSRect verticalScrollbarFrame = NSMakeRect(frame.size.width - 15.0,
+                                               1.0,
+                                               15.0,
+                                               (frame.size.height - 15.0));
+    [[self verticalScrollbar] setFrame:verticalScrollbarFrame];
+   
+    NSRect horizontalScrollbarFrame = NSMakeRect(0.0,
+                                                 frame.size.height - 15.0,
+                                                 (frame.size.width - 14.0),
+                                                 15.0);
+    [[self horizontalScrollbar] setFrame:horizontalScrollbarFrame];
+    
+    // Update Grip button Frame
+    NSRect gripButtonFrame = NSMakeRect(self.frame.size.width - 15.0,
+                                        self.frame.size.height - 15.0,
+                                        15.0,
+                                        15.0);
+    [[self gripButton] setFrame:gripButtonFrame];
+}
+
 #pragma mark - NON-COMPUTED PROPERTIES
 
 - (id)delegate

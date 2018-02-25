@@ -60,11 +60,6 @@
 
 #pragma mark - EVENTS
 
-- (void)mouseDragged:(NSEvent *)event
-{
-    NSLog(@"mouseDragged");
-}
-
 - (void)mouseUp:(NSEvent *)event
 {
     NSPoint pointDraggedTo = [NSEvent mouseLocation];

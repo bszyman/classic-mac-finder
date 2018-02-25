@@ -168,6 +168,40 @@
     return self;
 }
 
+- (void)setFrame:(NSRect)frameRect
+         display:(BOOL)flag
+         animate:(BOOL)animateFlag
+{
+    [super setFrame:frameRect
+            display:flag
+            animate:animateFlag];
+    
+    NSLog(@"setFrame:display:animate");
+    
+    //[[self contentView] setFrame:frameRect];
+    
+    // Update Title Bar
+    NSRect titlebarFrame = NSMakeRect(0.0,
+                                      0.0,
+                                      frameRect.size.width - 1.0,
+                                      19.0);
+    [[self titlebar] setFrame:titlebarFrame];
+    
+    // Update Detail Bar
+    NSRect detailFrame = NSMakeRect(0.0,
+                                    19.0,
+                                    frameRect.size.width - 1.0,
+                                    25.0);
+    [[self detailBar] setFrame:detailFrame];
+    
+    // Update Scroll View
+    NSRect scrollViewFrame = NSMakeRect(1.0,
+                                        44.0,
+                                        frameRect.size.width - 3.0,
+                                        frameRect.size.height - 44.0 - 2.0);
+    [[self scrollView] setFrame:scrollViewFrame];
+}
+
 - (void)setWindowActive
 {
     windowIsActive = YES;
