@@ -173,7 +173,9 @@
     CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
     
     NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, newWidth, newHeight);
-    [[self window] setFrame:newWindowFrame display:YES animate:NO];
+    //[[self window] setFrame:newWindowFrame display:YES animate:NO];
+    CCIClassicFinderWindow *wcWindow = (CCIClassicFinderWindow *)[self window];
+    [wcWindow finishedResizeToFrame:newWindowFrame];
     
     [[self directoryModel] setWindowDimensions:NSMakeSize(newWidth, newHeight)];
     [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
@@ -201,8 +203,10 @@
     // y coord
     CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
     
-    NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, newWidth, newHeight);
-    [[self window] setFrame:newWindowFrame display:YES animate:NO];
+    NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, fabs(newWidth), newHeight);
+    
+    CCIClassicFinderWindow *wcWindow = (CCIClassicFinderWindow *)[self window];
+    [wcWindow liveResizeToFrame:newWindowFrame];
 }
 
 @end
