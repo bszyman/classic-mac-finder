@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classic Finder/CCIClassicContentView.m"
-            timestampString = "541276053.070977"
+            filePath = "Classic Finder/CCITitleBar.m"
+            timestampString = "552670942.124506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-setFrame:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

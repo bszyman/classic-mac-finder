@@ -173,7 +173,7 @@
     CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
     
     NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, newWidth, newHeight);
-    //[[self window] setFrame:newWindowFrame display:YES animate:NO];
+    
     CCIClassicFinderWindow *wcWindow = (CCIClassicFinderWindow *)[self window];
     [wcWindow finishedResizeToFrame:newWindowFrame];
     

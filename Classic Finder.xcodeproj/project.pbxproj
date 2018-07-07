@@ -22,6 +22,7 @@
 		A80A5575201E65660021B414 /* NSString+Hashes.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A5573201E65640021B414 /* NSString+Hashes.m */; };
 		A80A5578202033ED0021B414 /* ScratchCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = A80A5577202033ED0021B414 /* ScratchCode.txt */; };
 		A80A5599202AC0F70021B414 /* CCIScrollContentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */; };
+		A84A807620682FA400537CBB /* CCIResizeOverlayOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */; };
 		A885B1CE1E59457100F1AB96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B1CD1E59457100F1AB96 /* AppDelegate.m */; };
 		A885B1D11E59457100F1AB96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B1D01E59457100F1AB96 /* main.m */; };
 		A885B1D31E59457100F1AB96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A885B1D21E59457100F1AB96 /* Assets.xcassets */; };
@@ -96,6 +97,8 @@
 		A80A5597202AC0F70021B414 /* CCIScrollContentContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIScrollContentContainer.h; sourceTree = "<group>"; };
 		A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCIScrollContentContainer.m; sourceTree = "<group>"; };
 		A80A56332038056E0021B414 /* CCIWindowGripButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIWindowGripButtonDelegate.h; sourceTree = "<group>"; };
+		A84A807420682FA400537CBB /* CCIResizeOverlayOutline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIResizeOverlayOutline.h; sourceTree = "<group>"; };
+		A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCIResizeOverlayOutline.m; sourceTree = "<group>"; };
 		A885B1C91E59457100F1AB96 /* Classic Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Classic Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A885B1CC1E59457100F1AB96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A885B1CD1E59457100F1AB96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				A805A85D1FD3A37D00274577 /* CCIApplicationStyles.m */,
 				A80A5597202AC0F70021B414 /* CCIScrollContentContainer.h */,
 				A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */,
+				A84A807420682FA400537CBB /* CCIResizeOverlayOutline.h */,
+				A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				A885B2021E594EE900F1AB96 /* CCITitleBar.m in Sources */,
 				A8D82F701F872D9C00B437F1 /* CFRFileSystemOperations.m in Sources */,
 				A805A86B200733F800274577 /* CFRDirectoryModel.m in Sources */,
+				A84A807620682FA400537CBB /* CCIResizeOverlayOutline.m in Sources */,
 				A8D82F611F80914C00B437F1 /* CFRWindowManager.m in Sources */,
 				A885B2051E59741000F1AB96 /* CCIClassicFolderIcon.m in Sources */,
 				A80A5575201E65660021B414 /* NSString+Hashes.m in Sources */,
