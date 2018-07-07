@@ -172,7 +172,10 @@
 
 - (void)liveResizeToFrame:(NSRect)frameRect
 {
-    NSRect overlayPositioning = NSMakeRect(0.0, 0.0, frameRect.size.width, frameRect.size.height);
+    NSRect overlayPositioning = NSMakeRect(0.0,
+                                           0.0,
+                                           frameRect.size.width,
+                                           frameRect.size.height);
     
     if ([self resizeOverlay] == nil) {
         CCIResizeOverlayOutline *resizeOverlay = [[CCIResizeOverlayOutline alloc] initWithFrame:overlayPositioning];
@@ -180,11 +183,11 @@
         [self.contentView addSubview:[self resizeOverlay]];
     }
     
-    [[self resizeOverlay] setFrame:overlayPositioning];
-    
     [self setFrame:frameRect
            display:YES
            animate:NO];
+    
+    [[self resizeOverlay] setFrame:overlayPositioning];
 }
 
 - (void)finishedResizeToFrame:(NSRect)frameRect

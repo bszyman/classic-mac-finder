@@ -32,6 +32,10 @@
         windowTopPath = [[NSBezierPath alloc] init];
     }
     
+    if (![windowTopPath isEmpty]) {
+        [windowTopPath removeAllPoints];
+    }
+    
     [windowTopPath moveToPoint:NSMakePoint(0.0, 0.0)];
     [windowTopPath lineToPoint:NSMakePoint(self.frame.size.width, 0.0)];
     [windowTopPath stroke];
@@ -39,6 +43,10 @@
     
     if (windowLeftPath == nil) {
         windowLeftPath = [[NSBezierPath alloc] init];
+    }
+    
+    if (![windowLeftPath isEmpty]) {
+        [windowLeftPath removeAllPoints];
     }
     
     [windowLeftPath moveToPoint:NSMakePoint(0.0, 0.0)];
@@ -49,12 +57,20 @@
         windowRightPath = [[NSBezierPath alloc] init];
     }
     
+    if (![windowRightPath isEmpty]) {
+        [windowRightPath removeAllPoints];
+    }
+    
     [windowRightPath moveToPoint:NSMakePoint(self.frame.size.width, 0.0)];
     [windowRightPath lineToPoint:NSMakePoint(self.frame.size.width, self.frame.size.height)];
     [windowRightPath stroke];
     
     if (windowBottomPath == nil) {
         windowBottomPath = [[NSBezierPath alloc] init];
+    }
+    
+    if (![windowBottomPath isEmpty]) {
+        [windowBottomPath removeAllPoints];
     }
     
     [windowBottomPath moveToPoint:NSMakePoint(0.0, self.frame.size.height)];
@@ -65,6 +81,10 @@
         menuBarBottomPath = [[NSBezierPath alloc] init];
     }
     
+    if (![menuBarBottomPath isEmpty]) {
+        [menuBarBottomPath removeAllPoints];
+    }
+    
     [menuBarBottomPath moveToPoint:NSMakePoint(0.0, 19.0)];
     [menuBarBottomPath lineToPoint:NSMakePoint(self.frame.size.width, 19.0)];
     [menuBarBottomPath stroke];
@@ -73,12 +93,20 @@
         verticalScrollbarLeftPath = [[NSBezierPath alloc] init];
     }
     
+    if (![verticalScrollbarLeftPath isEmpty]) {
+        [verticalScrollbarLeftPath removeAllPoints];
+    }
+    
     [verticalScrollbarLeftPath moveToPoint:NSMakePoint(self.frame.size.width - 20.0, 19.0)];
     [verticalScrollbarLeftPath lineToPoint:NSMakePoint(self.frame.size.width - 20.0, self.frame.size.height)];
     [verticalScrollbarLeftPath stroke];
     
     if (horizontalScrollbarTopPath == nil) {
         horizontalScrollbarTopPath = [[NSBezierPath alloc] init];
+    }
+    
+    if (![horizontalScrollbarTopPath isEmpty]) {
+        [horizontalScrollbarTopPath removeAllPoints];
     }
     
     [horizontalScrollbarTopPath moveToPoint:NSMakePoint(0.0, self.frame.size.height - 20.0)];
