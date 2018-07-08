@@ -66,7 +66,7 @@ typedef NS_ENUM(NSUInteger, FileSizeMetrics) {
         self.itemCountTextField.stringValue = @"4 items";
         self.itemCountTextField.bordered = NO;
         self.itemCountTextField.selectable = NO;
-        self.itemCountTextField.font = [NSFont systemFontOfSize:10.0];
+        self.itemCountTextField.font = [NSFont fontWithName:@"Geneva" size:10.0];
         
         [self addSubview:self.itemCountTextField];
         
@@ -77,7 +77,7 @@ typedef NS_ENUM(NSUInteger, FileSizeMetrics) {
         self.usedSpaceTextField.alignment = NSTextAlignmentCenter;
         self.usedSpaceTextField.bordered = NO;
         self.usedSpaceTextField.selectable = NO;
-        self.usedSpaceTextField.font = [NSFont systemFontOfSize:10.0];
+        self.usedSpaceTextField.font = [NSFont fontWithName:@"Geneva" size:10.0];
         
         [self addSubview:self.usedSpaceTextField];
         
@@ -88,7 +88,7 @@ typedef NS_ENUM(NSUInteger, FileSizeMetrics) {
         self.availableSpaceTextField.alignment = NSTextAlignmentRight;
         self.availableSpaceTextField.bordered = NO;
         self.availableSpaceTextField.selectable = NO;
-        self.availableSpaceTextField.font = [NSFont systemFontOfSize:10.0];
+        self.availableSpaceTextField.font = [NSFont fontWithName:@"Geneva" size:10.0];
         
         [self addSubview:self.availableSpaceTextField];
     }

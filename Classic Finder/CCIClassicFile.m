@@ -49,7 +49,7 @@
         NSRect fileLabelFrame = NSMakeRect(2.0, 35.0, 54.0, 24.0);
         self.fileLabel = [[NSTextField alloc] initWithFrame:fileLabelFrame];
         self.fileLabel.alignment = NSTextAlignmentCenter;
-        self.fileLabel.font = [NSFont systemFontOfSize:10.0];
+        self.fileLabel.font = [NSFont fontWithName:@"Geneva" size:10.0];
         self.fileLabel.bordered = NO;
         self.fileLabel.selectable = NO;
         self.fileLabel.lineBreakMode = NSLineBreakByCharWrapping;

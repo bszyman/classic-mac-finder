@@ -36,6 +36,8 @@
 		A885B2081E597AE300F1AB96 /* CCIClassicFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B2071E597AE300F1AB96 /* CCIClassicFolder.m */; };
 		A885B2111E59923B00F1AB96 /* CCIClassicFinderWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B2101E59923B00F1AB96 /* CCIClassicFinderWindow.m */; };
 		A885B2141E5AA6A900F1AB96 /* CCIClassicFinderDetailBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B2131E5AA6A900F1AB96 /* CCIClassicFinderDetailBar.m */; };
+		A88F63F020F1A4C900CC434B /* Chicago in Resources */ = {isa = PBXBuildFile; fileRef = A88F63EF20F1A4C900CC434B /* Chicago */; };
+		A88F63F220F1A95000CC434B /* Geneva in Resources */ = {isa = PBXBuildFile; fileRef = A88F63F120F1A95000CC434B /* Geneva */; };
 		A897BB1F200B3E7900C2D740 /* CFRFloppyDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A897BB1E200B3E7900C2D740 /* CFRFloppyDisk.m */; };
 		A8D82F611F80914C00B437F1 /* CFRWindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D82F5F1F80914B00B437F1 /* CFRWindowManager.m */; };
 		A8D82F671F849C3900B437F1 /* CCIClassicFileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D82F661F849C3900B437F1 /* CCIClassicFileIcon.m */; };
@@ -43,6 +45,7 @@
 		A8D82F6D1F872C9700B437F1 /* CCIClassicFinderWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D82F6C1F872C9700B437F1 /* CCIClassicFinderWindowController.m */; };
 		A8D82F701F872D9C00B437F1 /* CFRFileSystemOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D82F6F1F872D9C00B437F1 /* CFRFileSystemOperations.m */; };
 		A8D82F731F9D2F5B00B437F1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = A8D82F721F9D2F5B00B437F1 /* license.txt */; };
+		A8E46E7320F1B1EC00B5A829 /* chicagobold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8E46E7220F1B1EC00B5A829 /* chicagobold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,8 @@
 		A885B2101E59923B00F1AB96 /* CCIClassicFinderWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCIClassicFinderWindow.m; sourceTree = "<group>"; };
 		A885B2121E5AA6A900F1AB96 /* CCIClassicFinderDetailBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIClassicFinderDetailBar.h; sourceTree = "<group>"; };
 		A885B2131E5AA6A900F1AB96 /* CCIClassicFinderDetailBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCIClassicFinderDetailBar.m; sourceTree = "<group>"; };
+		A88F63EF20F1A4C900CC434B /* Chicago */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chicago; sourceTree = "<group>"; };
+		A88F63F120F1A95000CC434B /* Geneva */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Geneva; sourceTree = "<group>"; };
 		A897BB1D200B3E7900C2D740 /* CFRFloppyDisk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFRFloppyDisk.h; sourceTree = "<group>"; };
 		A897BB1E200B3E7900C2D740 /* CFRFloppyDisk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFRFloppyDisk.m; sourceTree = "<group>"; };
 		A8D82F5F1F80914B00B437F1 /* CFRWindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFRWindowManager.m; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		A8D82F6F1F872D9C00B437F1 /* CFRFileSystemOperations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFRFileSystemOperations.m; sourceTree = "<group>"; };
 		A8D82F711F88A4E800B437F1 /* CCIFinderIconProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIFinderIconProtocol.h; sourceTree = "<group>"; };
 		A8D82F721F9D2F5B00B437F1 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		A8E46E7220F1B1EC00B5A829 /* chicagobold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chicagobold.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +258,7 @@
 		A885B1CF1E59457100F1AB96 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A88F63EE20F1A4A500CC434B /* Fonts */,
 				A885B1D01E59457100F1AB96 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -319,6 +326,16 @@
 				A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */,
 			);
 			name = "UI Components";
+			sourceTree = "<group>";
+		};
+		A88F63EE20F1A4A500CC434B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A8E46E7220F1B1EC00B5A829 /* chicagobold.ttf */,
+				A88F63F120F1A95000CC434B /* Geneva */,
+				A88F63EF20F1A4C900CC434B /* Chicago */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A897BB1C200B381A00C2D740 /* Persistance */ = {
@@ -437,8 +454,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88F63F220F1A95000CC434B /* Geneva in Resources */,
 				A80A5578202033ED0021B414 /* ScratchCode.txt in Resources */,
 				A8D82F731F9D2F5B00B437F1 /* license.txt in Resources */,
+				A8E46E7320F1B1EC00B5A829 /* chicagobold.ttf in Resources */,
+				A88F63F020F1A4C900CC434B /* Chicago in Resources */,
 				A885B1D31E59457100F1AB96 /* Assets.xcassets in Resources */,
 				A885B1D61E59457100F1AB96 /* MainMenu.xib in Resources */,
 			);
@@ -650,6 +670,7 @@
 				DEVELOPMENT_TEAM = 275598G98S;
 				INFOPLIST_FILE = "Classic Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.classicmacfinder.Classic-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -666,6 +687,7 @@
 				DEVELOPMENT_TEAM = 275598G98S;
 				INFOPLIST_FILE = "Classic Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.classicmacfinder.Classic-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

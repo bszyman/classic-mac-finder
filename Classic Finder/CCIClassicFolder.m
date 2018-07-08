@@ -55,7 +55,7 @@
         NSRect folderLabelFrame = NSMakeRect(2.0, 35.0, 54.0, 50.0);
         self.folderLabel = [[NSTextField alloc] initWithFrame:folderLabelFrame];
         self.folderLabel.alignment = NSTextAlignmentCenter;
-        self.folderLabel.font = [NSFont systemFontOfSize:10.0];
+        self.folderLabel.font = [NSFont fontWithName:@"Geneva" size:10.0];
         self.folderLabel.bordered = NO;
         self.folderLabel.selectable = NO;
         self.folderLabel.lineBreakMode = NSLineBreakByCharWrapping;
