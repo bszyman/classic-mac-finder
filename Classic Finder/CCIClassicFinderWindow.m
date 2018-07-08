@@ -183,9 +183,21 @@
         [self.contentView addSubview:[self resizeOverlay]];
     }
     
-    [self setFrame:frameRect
+    // GUARD DO NOT LET THE WINDOW GET SMALLER THAN IT CURRENTLY IS
+    NSRect windowFrame = frameRect;
+    
+    if (windowFrame.size.width < self.frame.size.width) {
+        windowFrame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    }
+    
+    if (windowFrame.size.height < self.frame.size.height) {
+        windowFrame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, windowFrame.size.width, self.frame.size.height);
+    }
+    
+    [self setFrame:windowFrame
            display:YES
            animate:NO];
+    // ---
     
     [[self resizeOverlay] setFrame:overlayPositioning];
 }
