@@ -36,8 +36,8 @@
         [windowTopPath removeAllPoints];
     }
     
-    [windowTopPath moveToPoint:NSMakePoint(0.0, 0.0)];
-    [windowTopPath lineToPoint:NSMakePoint(self.frame.size.width, 0.0)];
+    [windowTopPath moveToPoint:NSMakePoint(0.0, 0.5)];
+    [windowTopPath lineToPoint:NSMakePoint(self.frame.size.width, 0.5)];
     [windowTopPath stroke];
     
     
@@ -49,8 +49,8 @@
         [windowLeftPath removeAllPoints];
     }
     
-    [windowLeftPath moveToPoint:NSMakePoint(0.0, 0.0)];
-    [windowLeftPath lineToPoint:NSMakePoint(0.0, self.frame.size.height)];
+    [windowLeftPath moveToPoint:NSMakePoint(0.5, 0.0)];
+    [windowLeftPath lineToPoint:NSMakePoint(0.5, self.frame.size.height)];
     [windowLeftPath stroke];
     
     if (windowRightPath == nil) {
@@ -61,8 +61,8 @@
         [windowRightPath removeAllPoints];
     }
     
-    [windowRightPath moveToPoint:NSMakePoint(self.frame.size.width, 0.0)];
-    [windowRightPath lineToPoint:NSMakePoint(self.frame.size.width, self.frame.size.height)];
+    [windowRightPath moveToPoint:NSMakePoint((self.frame.size.width - 0.5), 0.0)];
+    [windowRightPath lineToPoint:NSMakePoint((self.frame.size.width - 0.5), self.frame.size.height)];
     [windowRightPath stroke];
     
     if (windowBottomPath == nil) {
@@ -73,8 +73,8 @@
         [windowBottomPath removeAllPoints];
     }
     
-    [windowBottomPath moveToPoint:NSMakePoint(0.0, self.frame.size.height)];
-    [windowBottomPath lineToPoint:NSMakePoint(self.frame.size.width, self.frame.size.height)];
+    [windowBottomPath moveToPoint:NSMakePoint(0.0, (self.frame.size.height - 0.5))];
+    [windowBottomPath lineToPoint:NSMakePoint(self.frame.size.width, (self.frame.size.height - 0.5))];
     [windowBottomPath stroke];
     
     if (menuBarBottomPath == nil) {
@@ -97,8 +97,8 @@
         [verticalScrollbarLeftPath removeAllPoints];
     }
     
-    [verticalScrollbarLeftPath moveToPoint:NSMakePoint(self.frame.size.width - 20.0, 19.0)];
-    [verticalScrollbarLeftPath lineToPoint:NSMakePoint(self.frame.size.width - 20.0, self.frame.size.height)];
+    [verticalScrollbarLeftPath moveToPoint:NSMakePoint((self.frame.size.width - 20.5), 19.0)];
+    [verticalScrollbarLeftPath lineToPoint:NSMakePoint((self.frame.size.width - 20.5), self.frame.size.height)];
     [verticalScrollbarLeftPath stroke];
     
     if (horizontalScrollbarTopPath == nil) {
@@ -109,8 +109,8 @@
         [horizontalScrollbarTopPath removeAllPoints];
     }
     
-    [horizontalScrollbarTopPath moveToPoint:NSMakePoint(0.0, self.frame.size.height - 20.0)];
-    [horizontalScrollbarTopPath lineToPoint:NSMakePoint(self.frame.size.width, self.frame.size.height - 20.0)];
+    [horizontalScrollbarTopPath moveToPoint:NSMakePoint(0.0, (self.frame.size.height - 20.5))];
+    [horizontalScrollbarTopPath lineToPoint:NSMakePoint(self.frame.size.width, (self.frame.size.height - 20.5))];
     [horizontalScrollbarTopPath stroke];
 }
 
