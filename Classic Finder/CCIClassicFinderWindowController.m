@@ -52,7 +52,10 @@
         self.selectedFiles = [[NSMutableArray alloc] initWithCapacity:50];
         
         NSUInteger windowStyleMask = NSWindowStyleMaskBorderless;
-        NSRect initalContentRect = NSMakeRect(self.directoryModel.windowPosition.x, self.directoryModel.windowPosition.y, 500.0, 300.0);
+        NSRect initalContentRect = NSMakeRect(self.directoryModel.windowPosition.x,
+                                              self.directoryModel.windowPosition.y,
+                                              self.directoryModel.windowDimensions.width,
+                                              self.directoryModel.windowDimensions.height);
         
         // https://stackoverflow.com/a/33229421/5096725
         CCIClassicFinderWindow *finderWindow = [[CCIClassicFinderWindow alloc] initWithContentRect:initalContentRect
@@ -178,7 +181,17 @@
     [wcWindow finishedResizeToFrame:newWindowFrame];
     
     [[self directoryModel] setWindowDimensions:NSMakeSize(newWidth, newHeight)];
+    
+    
+    
+    NSPoint currentPosition = self.window.frame.origin;
+    [[self directoryModel] setWindowPosition:currentPosition];
+    
+    
+    
+    
     [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+    
     
     
     CCIClassicContentView *contentView = (CCIClassicContentView *)self.window.contentView;

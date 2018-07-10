@@ -26,7 +26,7 @@
 @interface CFRFloppyDisk : NSObject
 
 + (void)restoreFileProperties:(CFRFileModel *)fileModel;
-+ (void)restoreDirectoryProperties:(CFRDirectoryModel *)directoryModel;
++ (BOOL)restoreDirectoryProperties:(CFRDirectoryModel *)directoryModel;
 + (void)restoreAppDirectoryProperties:(CFRAppModel *)appDirectoryModel;
 
 + (BOOL)persistFileProperties:(CFRFileModel *)fileModel;

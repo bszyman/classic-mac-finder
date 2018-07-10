@@ -87,6 +87,24 @@
     CFRDirectoryModel *rootDirectoryModel = [[CFRDirectoryModel alloc] init];
     [rootDirectoryModel setObjectPath:userDirectoryPath];
     
+    NSString *title = [[NSFileManager defaultManager] displayNameAtPath:userDirectoryPath.absoluteString];
+    [rootDirectoryModel setTitle:title];
+    
+    NSError *error = nil;
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:userDirectoryPath.absoluteString
+                                                                                    error:&error];
+    if (error == nil) {
+        NSDate *fileModificationDate = [fileAttributes objectForKey:NSFileModificationDate];
+        if (fileModificationDate != nil) {
+            [rootDirectoryModel setLastModified:fileModificationDate];
+        }
+        
+        NSDate *fileCreationDate = [fileAttributes objectForKey:NSFileCreationDate];
+        if (fileCreationDate != nil) {
+            [rootDirectoryModel setCreationDate:fileCreationDate];
+        }
+    }
+    
     [CFRFloppyDisk restoreDirectoryProperties:rootDirectoryModel];
     NSPoint persistedWindowPosition = [rootDirectoryModel windowPosition];
     
@@ -140,6 +158,21 @@
             [rootDirectoryModel setWindowPosition:newWindowPosition];
         }
     }
+    
+    NSSize persistedWindowDimensions = [rootDirectoryModel windowDimensions];
+    NSSize safeWindowDimensions = persistedWindowDimensions;
+    
+    if (persistedWindowDimensions.width < 0.0) {
+        safeWindowDimensions = NSMakeSize(500.0, persistedWindowDimensions.height);
+        [rootDirectoryModel setWindowDimensions:safeWindowDimensions];
+    }
+    
+    if (persistedWindowDimensions.height < 0.0) {
+        safeWindowDimensions = NSMakeSize(safeWindowDimensions.width, (safeWindowDimensions.width * 0.6));
+        [rootDirectoryModel setWindowDimensions:safeWindowDimensions];
+    }
+    
+    [CFRFloppyDisk persistDirectoryProperties:rootDirectoryModel];
     
     CCIClassicFinderWindowController *finderWindow = [CFRWindowManager.sharedInstance createWindowForDirectory:rootDirectoryModel];
     [finderWindow showWindow:self];
