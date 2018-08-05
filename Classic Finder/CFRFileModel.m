@@ -26,6 +26,7 @@
 @synthesize creationDate;
 @synthesize lastModified;
 @synthesize objectPath;
+@synthesize fileSystemNumber;
 
 @synthesize iconPosition;
 

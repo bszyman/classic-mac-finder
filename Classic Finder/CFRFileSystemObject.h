@@ -25,6 +25,7 @@
 @property NSDate *creationDate;
 @property NSDate *lastModified;
 @property NSString *title;
+@property unsigned long fileSystemNumber;
 
 @property NSPoint iconPosition;
 

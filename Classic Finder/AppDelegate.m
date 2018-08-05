@@ -23,6 +23,7 @@
 #import "CFRWindowManager.h"
 #import "CFRDirectoryModel.h"
 #import "CFRFloppyDisk.h"
+#import "CFRFileSystemUtils.h"
 
 @interface AppDelegate ()
 
@@ -82,28 +83,19 @@
 
 - (void)openRootVolumeWindow
 {
-    NSURL *userDirectoryPath = [NSURL URLWithString:@"file:///"];
+    NSURL *rootDirectoryPath = [NSURL URLWithString:@"file:///"];
     
     CFRDirectoryModel *rootDirectoryModel = [[CFRDirectoryModel alloc] init];
-    [rootDirectoryModel setObjectPath:userDirectoryPath];
+    [rootDirectoryModel setObjectPath:rootDirectoryPath];
     
-    NSString *title = [[NSFileManager defaultManager] displayNameAtPath:userDirectoryPath.absoluteString];
+    NSString *title = [CFRFileSystemUtils determineDirectoryNameForURL:rootDirectoryPath];
     [rootDirectoryModel setTitle:title];
     
     NSError *error = nil;
-    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:userDirectoryPath.absoluteString
-                                                                                    error:&error];
-    if (error == nil) {
-        NSDate *fileModificationDate = [fileAttributes objectForKey:NSFileModificationDate];
-        if (fileModificationDate != nil) {
-            [rootDirectoryModel setLastModified:fileModificationDate];
-        }
-        
-        NSDate *fileCreationDate = [fileAttributes objectForKey:NSFileCreationDate];
-        if (fileCreationDate != nil) {
-            [rootDirectoryModel setCreationDate:fileCreationDate];
-        }
-    }
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:rootDirectoryPath.path error:&error];
+    NSNumber *fileSystemNumber = fileAttributes[NSFileSystemNumber];
+    
+    [rootDirectoryModel setFileSystemNumber:[fileSystemNumber unsignedLongLongValue]];
     
     [CFRFloppyDisk restoreDirectoryProperties:rootDirectoryModel];
     NSPoint persistedWindowPosition = [rootDirectoryModel windowPosition];
