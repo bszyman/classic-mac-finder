@@ -22,6 +22,7 @@
 		A80A5575201E65660021B414 /* NSString+Hashes.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A5573201E65640021B414 /* NSString+Hashes.m */; };
 		A80A5578202033ED0021B414 /* ScratchCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = A80A5577202033ED0021B414 /* ScratchCode.txt */; };
 		A80A5599202AC0F70021B414 /* CCIScrollContentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */; };
+		A84A807620682FA400537CBB /* CCIResizeOverlayOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */; };
 		A885B1CE1E59457100F1AB96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B1CD1E59457100F1AB96 /* AppDelegate.m */; };
 		A885B1D11E59457100F1AB96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A885B1D01E59457100F1AB96 /* main.m */; };
 		A885B1D31E59457100F1AB96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A885B1D21E59457100F1AB96 /* Assets.xcassets */; };
@@ -98,6 +99,9 @@
 		A80A55962026CD400021B414 /* CCIClassicTitlebarDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIClassicTitlebarDelegate.h; sourceTree = "<group>"; };
 		A80A5597202AC0F70021B414 /* CCIScrollContentContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIScrollContentContainer.h; sourceTree = "<group>"; };
 		A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCIScrollContentContainer.m; sourceTree = "<group>"; };
+		A80A56332038056E0021B414 /* CCIWindowGripButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIWindowGripButtonDelegate.h; sourceTree = "<group>"; };
+		A84A807420682FA400537CBB /* CCIResizeOverlayOutline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCIResizeOverlayOutline.h; sourceTree = "<group>"; };
+		A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCIResizeOverlayOutline.m; sourceTree = "<group>"; };
 		A885B1C91E59457100F1AB96 /* Classic Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Classic Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A885B1CC1E59457100F1AB96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A885B1CD1E59457100F1AB96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				A805A861200343CC00274577 /* CFRFileSystemUtils.h */,
 				A805A862200343CC00274577 /* CFRFileSystemUtils.m */,
 				A80A5577202033ED0021B414 /* ScratchCode.txt */,
+				A80A56332038056E0021B414 /* CCIWindowGripButtonDelegate.h */,
 				A80A55962026CD400021B414 /* CCIClassicTitlebarDelegate.h */,
 			);
 			path = "Classic Finder";
@@ -317,6 +322,8 @@
 				A805A85D1FD3A37D00274577 /* CCIApplicationStyles.m */,
 				A80A5597202AC0F70021B414 /* CCIScrollContentContainer.h */,
 				A80A5598202AC0F70021B414 /* CCIScrollContentContainer.m */,
+				A84A807420682FA400537CBB /* CCIResizeOverlayOutline.h */,
+				A84A807520682FA400537CBB /* CCIResizeOverlayOutline.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -402,7 +409,7 @@
 		A885B1C11E59457000F1AB96 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Protype Software Ltd.";
 				TargetAttributes = {
 					A885B1C81E59457100F1AB96 = {
@@ -424,7 +431,7 @@
 			};
 			buildConfigurationList = A885B1C41E59457000F1AB96 /* Build configuration list for PBXProject "Classic Finder" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -491,6 +498,7 @@
 				A885B2021E594EE900F1AB96 /* CCITitleBar.m in Sources */,
 				A8D82F701F872D9C00B437F1 /* CFRFileSystemOperations.m in Sources */,
 				A805A86B200733F800274577 /* CFRDirectoryModel.m in Sources */,
+				A84A807620682FA400537CBB /* CCIResizeOverlayOutline.m in Sources */,
 				A8D82F611F80914C00B437F1 /* CFRWindowManager.m in Sources */,
 				A885B2051E59741000F1AB96 /* CCIClassicFolderIcon.m in Sources */,
 				A80A5575201E65660021B414 /* NSString+Hashes.m in Sources */,
@@ -557,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -566,6 +575,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -573,6 +583,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -610,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -619,6 +631,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -626,6 +639,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -656,13 +670,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 275598G98S;
 				INFOPLIST_FILE = "Classic Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.classicmacfinder.Classic-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -673,13 +689,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 275598G98S;
 				INFOPLIST_FILE = "Classic Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.classicmacfinder.Classic-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

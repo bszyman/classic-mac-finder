@@ -1,8 +1,8 @@
 //
-//  CFRFileSystemObject.h
+//  CCIWindowGripButtonDelegate.h
 //  Classic Finder
 //
-//  Created by Ben Szymanski on 1/11/18.
+//  Created by Ben Szymanski on 2/17/18.
 //  Copyright © 2018 Ben Szymanski. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,17 +19,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CFRFileSystemObject <NSObject>
+@protocol CCIWindowGripButtonDelegate <NSObject>
 
-@property NSURL *objectPath;
-@property NSDate *creationDate;
-@property NSDate *lastModified;
-@property NSString *title;
-@property unsigned long fileSystemNumber;
-
-@property NSPoint iconPosition;
-
-- (NSString *)uniqueID;
-- (NSString *)objectType;
+@optional
+- (void)gripButtonIsDraggingToCoordinates:(NSPoint)pointDraggedTo;
+- (void)gripButtonDidFinishDraggingToCoordinates:(NSPoint)pointDraggedTo;
 
 @end

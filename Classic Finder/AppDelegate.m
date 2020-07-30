@@ -23,6 +23,7 @@
 #import "CFRWindowManager.h"
 #import "CFRDirectoryModel.h"
 #import "CFRFloppyDisk.h"
+#import "CFRFileSystemUtils.h"
 
 @interface AppDelegate ()
 
@@ -82,10 +83,19 @@
 
 - (void)openRootVolumeWindow
 {
-    NSURL *userDirectoryPath = [NSURL URLWithString:@"file:///"];
+    NSURL *rootDirectoryPath = [NSURL URLWithString:@"file:///"];
     
     CFRDirectoryModel *rootDirectoryModel = [[CFRDirectoryModel alloc] init];
-    [rootDirectoryModel setObjectPath:userDirectoryPath];
+    [rootDirectoryModel setObjectPath:rootDirectoryPath];
+    
+    NSString *title = [CFRFileSystemUtils determineDirectoryNameForURL:rootDirectoryPath];
+    [rootDirectoryModel setTitle:title];
+    
+    NSError *error = nil;
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:rootDirectoryPath.path error:&error];
+    NSNumber *fileSystemNumber = fileAttributes[NSFileSystemNumber];
+    
+    [rootDirectoryModel setFileSystemNumber:[fileSystemNumber unsignedLongLongValue]];
     
     [CFRFloppyDisk restoreDirectoryProperties:rootDirectoryModel];
     NSPoint persistedWindowPosition = [rootDirectoryModel windowPosition];
@@ -140,6 +150,21 @@
             [rootDirectoryModel setWindowPosition:newWindowPosition];
         }
     }
+    
+    NSSize persistedWindowDimensions = [rootDirectoryModel windowDimensions];
+    NSSize safeWindowDimensions = persistedWindowDimensions;
+    
+    if (persistedWindowDimensions.width < 0.0) {
+        safeWindowDimensions = NSMakeSize(500.0, persistedWindowDimensions.height);
+        [rootDirectoryModel setWindowDimensions:safeWindowDimensions];
+    }
+    
+    if (persistedWindowDimensions.height < 0.0) {
+        safeWindowDimensions = NSMakeSize(safeWindowDimensions.width, (safeWindowDimensions.width * 0.6));
+        [rootDirectoryModel setWindowDimensions:safeWindowDimensions];
+    }
+    
+    [CFRFloppyDisk persistDirectoryProperties:rootDirectoryModel];
     
     CCIClassicFinderWindowController *finderWindow = [CFRWindowManager.sharedInstance createWindowForDirectory:rootDirectoryModel];
     [finderWindow showWindow:self];

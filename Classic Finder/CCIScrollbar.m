@@ -47,7 +47,7 @@
                                 withMaxContentSize:(CGFloat)maxContentSize
 {
     NSRect scrollViewFrame = [scrollView frame];
-    NSRect scrollbarFrame = NSMakeRect(0.0, scrollViewFrame.size.height - 15.0, (scrollViewFrame.size.width - 14.0), 15.0);
+    NSRect scrollbarFrame = NSMakeRect(0.0, scrollViewFrame.size.height - 16.0, (scrollViewFrame.size.width - 14.0), 15.0);
     
     CCIScrollbar *scrollbar = [[CCIScrollbar alloc] initWithFrame:scrollbarFrame];
     
@@ -104,7 +104,7 @@
     [downButton setAction:@selector(performScrollAction:)];
     [downButton setTarget:scrollView];
     
-    NSPoint scrollerPosition = NSMakePoint(1.0, 16.0);
+    NSPoint scrollerPosition = NSMakePoint(1.0, 14.0);
     CCIScrollbarScroller *scroller = [CCIScrollbarScroller scrollerBoxAtPoint:scrollerPosition
                                                            withDirectionality:ScrollerVertical];
     [scrollbar addSubview:scroller];
@@ -119,6 +119,29 @@
     [scrollbar setWhiteOut:NO];
 
     return scrollbar;
+}
+
+- (void)setFrame:(NSRect)frame
+{
+    [super setFrame:frame];
+    
+    if ([self direction] == Horizontal) {
+        NSRect currentRightButtonFrame = [[self downOrRightArrow] frame];
+        NSRect newRightButtonFrame = NSMakeRect(frame.size.width - 15.0,
+                                                currentRightButtonFrame.origin.y,
+                                                currentRightButtonFrame.size.width,
+                                                currentRightButtonFrame.size.height);
+        
+        [[self downOrRightArrow] setFrame:newRightButtonFrame];
+    } else if ([self direction] == Vertical) {
+        NSRect currentDownButtonFrame = [[self downOrRightArrow] frame];
+        NSRect newDownButtonFrame = NSMakeRect(currentDownButtonFrame.origin.x,
+                                               frame.size.height - 16.0,
+                                               currentDownButtonFrame.size.width,
+                                               currentDownButtonFrame.size.height);
+        
+        [[self downOrRightArrow] setFrame:newDownButtonFrame];
+    }
 }
 
 #pragma mark - UPDATE SCROLLBAR PROPERTY METHODS

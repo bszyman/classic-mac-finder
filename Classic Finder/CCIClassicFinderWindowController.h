@@ -19,12 +19,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CCIClassicTitlebarDelegate.h"
+#import "CCIWindowGripButtonDelegate.h"
 
 @class CCIClassicFile;
 @class CCIClassicFolder;
 @class CFRDirectoryModel;
 
-@interface CCIClassicFinderWindowController : NSWindowController <CCIClassicTitlebarDelegate>
+@interface CCIClassicFinderWindowController : NSWindowController <CCIClassicTitlebarDelegate, CCIWindowGripButtonDelegate>
 
 @property (nonatomic, strong) CFRDirectoryModel *directoryModel;
 

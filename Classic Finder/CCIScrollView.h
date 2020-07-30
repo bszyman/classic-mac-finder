@@ -21,11 +21,18 @@
 
 @class CCIScrollContentContainer;
 @class CCIScrollContentView;
+@class CCIClassicFinderWindowController;
 
 @interface CCIScrollView : NSView
 
 @property (nonatomic, strong) CCIScrollContentView *contentView;
 @property (nonatomic, strong) CCIScrollContentContainer *contentViewContainer;
+
+- (id)delegate;
+- (void)setDelegate:(id)newDelegate;
+
+- (instancetype)initWithFrame:(NSRect)frameRect
+                andController:(CCIClassicFinderWindowController *)wc;
 
 - (void)performScrollAction:(id)sender;
 - (void)resizeContentView:(NSRect)newFrame;
