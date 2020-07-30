@@ -42,7 +42,7 @@ Install as you would any other cocoa app.
 
 ## Meta
 
-Ben Szymanski - [@captainflotsam](https://twitter.com/captainfloatsam)
+Ben Szymanski - [@captainflotsam](https://twitter.com/captainflotsam)
 
 Distributed under the Apache v2 license. See ``LICENSE`` for more information.
 
