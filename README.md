@@ -22,8 +22,10 @@ Install as you would any other cocoa app.
 
 ## Release History
 
+* 1.1.3
+    * Window resizing works... mostly. There's a few glitches and I'm sure you'll find. ;)
 * 1.1.2
-    * Finder windows now use Chicago and Geneva font families as appropraite.
+    * Finder windows now use Chicago and Geneva font families as appropriate.
 * 1.1.1
 	* Added the 1px white spacer between the detail bar and the scroll view.
 	* Now distributing both code-signed and unsigned binaries. 
@@ -42,7 +44,7 @@ Install as you would any other cocoa app.
 
 ## Meta
 
-Ben Szymanski - [@captainflotsam](https://twitter.com/captainflotsam)
+Ben Szymanski - [https://bszyman.com](https://bszyman.com)
 
 Distributed under the Apache v2 license. See ``LICENSE`` for more information.
 
