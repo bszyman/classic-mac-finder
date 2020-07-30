@@ -47,7 +47,7 @@
                                 withMaxContentSize:(CGFloat)maxContentSize
 {
     NSRect scrollViewFrame = [scrollView frame];
-    NSRect scrollbarFrame = NSMakeRect(0.0, scrollViewFrame.size.height - 15.0, (scrollViewFrame.size.width - 14.0), 15.0);
+    NSRect scrollbarFrame = NSMakeRect(0.0, scrollViewFrame.size.height - 16.0, (scrollViewFrame.size.width - 14.0), 15.0);
     
     CCIScrollbar *scrollbar = [[CCIScrollbar alloc] initWithFrame:scrollbarFrame];
     

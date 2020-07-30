@@ -95,7 +95,7 @@
         NSRect scrollViewFrame = NSMakeRect(1.0,
                                             44.0,
                                             self.frame.size.width - 3.0,
-                                            self.frame.size.height - 44.0 - 2.0);
+                                            self.frame.size.height - 44.0 - 1.0);
         
         self.scrollView = [[CCIScrollView alloc] initWithFrame:scrollViewFrame
                                                  andController:self.windowController];
