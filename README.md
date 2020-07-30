@@ -22,6 +22,8 @@ Install as you would any other cocoa app.
 
 ## Release History
 
+* 1.1.2
+    * Finder windows now use Chicago and Geneva font families as appropraite.
 * 1.1.1
 	* Added the 1px white spacer between the detail bar and the scroll view.
 	* Now distributing both code-signed and unsigned binaries. 
