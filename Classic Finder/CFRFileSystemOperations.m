@@ -66,12 +66,23 @@
                                      forKey:NSURLContentModificationDateKey
                                       error:nil];
             
+            NSError *err;
+            NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:directoryItem.path
+                                                                                                   error:&err];
+            
+            if (err != nil) {
+                NSLog(@"%@", err.description);
+            }
+            
+            NSNumber *fileSystemNumber = fileAttributes[NSFileSystemNumber];
+            
             if ([isDirectory boolValue]) {
                 CFRDirectoryModel *directoryModel = [[CFRDirectoryModel alloc] init];
                 [directoryModel setTitle:title];
                 [directoryModel setCreationDate:createdDate];
                 [directoryModel setLastModified:lastModifiedDate];
                 [directoryModel setObjectPath:directoryItem];
+                [directoryModel setFileSystemNumber:[fileSystemNumber unsignedLongLongValue]];
                 
                 [fileList addObject:directoryModel];
             } else {
@@ -80,6 +91,7 @@
                 [fileModel setCreationDate:createdDate];
                 [fileModel setLastModified:lastModifiedDate];
                 [fileModel setObjectPath:directoryItem];
+                [fileModel setFileSystemNumber:[fileSystemNumber unsignedLongLongValue]];
                 
                 [fileList addObject:fileModel];
             }

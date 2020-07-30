@@ -114,6 +114,20 @@ typedef NS_ENUM(NSUInteger, FileSizeMetrics) {
     return YES;
 }
 
+- (void)setFrame:(NSRect)frame
+{
+    [super setFrame:frame];
+    
+    // Update Used Space Text Field Frame
+    NSRect usedSpaceFrame = NSMakeRect(((self.frame.size.width / 2.0) - (170.0 / 2.0)), 5.0, 170.0, 17.0);
+    [[self usedSpaceTextField] setFrame:usedSpaceFrame];
+    
+    
+    // Update Available Space Text Field Frame
+    NSRect availableSpaceFrame = NSMakeRect((self.frame.size.width - 170.0 - 7.0), 5.0, 170.0, 17.0);
+    [[self availableSpaceTextField] setFrame:availableSpaceFrame];
+}
+
 - (FileSizeMetrics)determineFileSizeMetric:(NSInteger)fileSize
 {
     FileSizeMetrics selectedMetric = kByteMetric;

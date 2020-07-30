@@ -30,6 +30,7 @@
 #import "CFRFileModel.h"
 #import "CFRAppModel.h"
 #import "CCIClassicFinderWindowController.h"
+#import "CCIResizeOverlayOutline.h"
 
 @interface CCIClassicFinderWindow () {
     BOOL windowIsActive;
@@ -38,6 +39,7 @@
 @property (nonatomic, strong) CCITitleBar *titlebar;
 @property (nonatomic, strong) CCIClassicFinderDetailBar *detailBar;
 @property (nonatomic, strong) CCIScrollView *scrollView;
+@property (nonatomic, strong) CCIResizeOverlayOutline *resizeOverlay;
 
 @end
 
@@ -93,10 +95,10 @@
         NSRect scrollViewFrame = NSMakeRect(1.0,
                                             44.0,
                                             self.frame.size.width - 3.0,
-                                            self.frame.size.height - 44.0 - 2.0);
+                                            self.frame.size.height - 44.0 - 1.0);
         
-        self.scrollView = [[CCIScrollView alloc] initWithFrame:scrollViewFrame];
-        
+        self.scrollView = [[CCIScrollView alloc] initWithFrame:scrollViewFrame
+                                                 andController:self.windowController];
         [self.contentView addSubview:self.scrollView];
         
         NSUInteger iconRow = 0;
@@ -166,6 +168,82 @@
     }
     
     return self;
+}
+
+- (void)liveResizeToFrame:(NSRect)frameRect
+{
+    NSRect overlayPositioning = NSMakeRect(0.0,
+                                           0.0,
+                                           frameRect.size.width,
+                                           frameRect.size.height);
+    
+    if ([self resizeOverlay] == nil) {
+        CCIResizeOverlayOutline *resizeOverlay = [[CCIResizeOverlayOutline alloc] initWithFrame:overlayPositioning];
+        [self setResizeOverlay:resizeOverlay];
+        [self.contentView addSubview:[self resizeOverlay]];
+    }
+    
+    // GUARD DO NOT LET THE WINDOW GET SMALLER THAN IT CURRENTLY IS
+    NSRect windowFrame = frameRect;
+    
+    if (windowFrame.size.width < self.frame.size.width) {
+        windowFrame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    }
+    
+    if (windowFrame.size.height < self.frame.size.height) {
+        windowFrame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, windowFrame.size.width, self.frame.size.height);
+    }
+    
+    [self setFrame:windowFrame
+           display:YES
+           animate:NO];
+    // ---
+    
+    [[self resizeOverlay] setFrame:overlayPositioning];
+}
+
+- (void)finishedResizeToFrame:(NSRect)frameRect
+{
+    if ([self resizeOverlay] != nil) {
+        // remove frame
+        [[self resizeOverlay] removeFromSuperview];
+        [self setResizeOverlay:nil];
+    }
+    
+    NSRect roundedFrameRect = NSMakeRect(frameRect.origin.x,
+                                         frameRect.origin.y,
+                                         round(frameRect.size.width),
+                                         round(frameRect.size.height));
+    
+    // Update Title Bar
+    [self setFrame:roundedFrameRect
+           display:YES
+           animate:NO];
+    
+    // round these otherwise it'll result in subpixel rendering
+    // and that looks like crap on non-retina screens.
+    //CGFloat newFrameSizeWidthRounded = round(frameRect.size.width);
+    //CGFloat newFrameSizeHeightRounded = round(frameRect.size.height);
+    
+    NSRect titlebarFrame = NSMakeRect(0.0,
+                                      0.0,
+                                      roundedFrameRect.size.width - 1.0,
+                                      19.0);
+    [[self titlebar] setFrame:titlebarFrame];
+    
+    // Update Detail Bar
+    NSRect detailFrame = NSMakeRect(0.0,
+                                    19.0,
+                                    roundedFrameRect.size.width - 1.0,
+                                    25.0);
+    [[self detailBar] setFrame:detailFrame];
+    
+    // Update Scroll View
+    NSRect scrollViewFrame = NSMakeRect(1.0,
+                                        44.0,
+                                        roundedFrameRect.size.width - 3.0,
+                                        roundedFrameRect.size.height - 44.0 - 2.0);
+    [[self scrollView] setFrame:scrollViewFrame];
 }
 
 - (void)setWindowActive

@@ -27,6 +27,7 @@
 #import "CFRFileSystemUtils.h"
 #import "CFRDirectoryModel.h"
 #import "CFRFloppyDisk.h"
+#import "CCIClassicContentView.h"
 
 @interface CCIClassicFinderWindowController ()
 
@@ -51,7 +52,10 @@
         self.selectedFiles = [[NSMutableArray alloc] initWithCapacity:50];
         
         NSUInteger windowStyleMask = NSWindowStyleMaskBorderless;
-        NSRect initalContentRect = NSMakeRect(self.directoryModel.windowPosition.x, self.directoryModel.windowPosition.y, 500.0, 300.0);
+        NSRect initalContentRect = NSMakeRect(self.directoryModel.windowPosition.x,
+                                              self.directoryModel.windowPosition.y,
+                                              self.directoryModel.windowDimensions.width,
+                                              self.directoryModel.windowDimensions.height);
         
         // https://stackoverflow.com/a/33229421/5096725
         CCIClassicFinderWindow *finderWindow = [[CCIClassicFinderWindow alloc] initWithContentRect:initalContentRect
@@ -156,6 +160,66 @@
     
     [[self directoryModel] setWindowPosition:currentPosition];
     [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+}
+
+#pragma mark - WINDOW GRIP BUTTON DELEGATE METHODS
+
+- (void)gripButtonDidFinishDraggingToCoordinates:(NSPoint)pointDraggedTo
+{
+    CGFloat newWidth = pointDraggedTo.x - self.window.frame.origin.x;
+    CGFloat newHeight = (self.window.frame.origin.y + self.window.frame.size.height) - pointDraggedTo.y;
+    
+    // this because the mac's coordinate system starts in the lower left
+    // we need to reposition the origin coordinate on the y axis
+    // by determining the offset between the current y coord and the new
+    // y coord
+    CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
+    
+    NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, newWidth, newHeight);
+    
+    CCIClassicFinderWindow *wcWindow = (CCIClassicFinderWindow *)[self window];
+    [wcWindow finishedResizeToFrame:newWindowFrame];
+    
+    [[self directoryModel] setWindowDimensions:NSMakeSize(newWidth, newHeight)];
+    
+    
+    
+    NSPoint currentPosition = self.window.frame.origin;
+    [[self directoryModel] setWindowPosition:currentPosition];
+    
+    
+    
+    
+    [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+    
+    
+    
+    CCIClassicContentView *contentView = (CCIClassicContentView *)self.window.contentView;
+    [contentView setWindowIsResizing:NO];
+    [contentView setNeedsDisplay:YES];
+}
+
+- (void)gripButtonIsDraggingToCoordinates:(NSPoint)pointDraggedTo
+{
+    CCIClassicContentView *contentView = (CCIClassicContentView *)self.window.contentView;
+    [contentView setWindowIsResizing:YES];
+    [contentView setNeedsDisplay:YES];
+    
+    
+    
+    CGFloat newWidth = pointDraggedTo.x - self.window.frame.origin.x;
+    CGFloat newHeight = (self.window.frame.origin.y + self.window.frame.size.height) - pointDraggedTo.y;
+    
+    // this because the mac's coordinate system starts in the lower left
+    // we need to reposition the origin coordinate on the y axis
+    // by determining the offset between the current y coord and the new
+    // y coord
+    CGFloat yOriginOffset = self.window.frame.origin.y - (self.window.frame.origin.y - pointDraggedTo.y);
+    
+    NSRect newWindowFrame = NSMakeRect(self.window.frame.origin.x, yOriginOffset, fabs(newWidth), newHeight);
+    
+    CCIClassicFinderWindow *wcWindow = (CCIClassicFinderWindow *)[self window];
+    [wcWindow liveResizeToFrame:newWindowFrame];
 }
 
 @end

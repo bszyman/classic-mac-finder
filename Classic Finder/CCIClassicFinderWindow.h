@@ -35,5 +35,7 @@
                       andController:(CCIClassicFinderWindowController *)wc;
 - (void)setWindowActive;
 - (void)setWindowInactive;
+- (void)liveResizeToFrame:(NSRect)frameRect;
+- (void)finishedResizeToFrame:(NSRect)frameRect;
 
 @end

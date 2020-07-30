@@ -21,6 +21,9 @@
 
 @interface CCIWindowGripButton : NSControl
 
+- (id)delegate;
+- (void)setDelegate:(id)newDelegate;
+
 - (void)enableButton;
 - (void)disableButton;
 - (void)disableAndWhiteOutButton;

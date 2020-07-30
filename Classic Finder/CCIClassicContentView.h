@@ -23,4 +23,6 @@
 
 - (NSRect)contentArea;
 
+- (void)setWindowIsResizing:(BOOL)resizing;
+
 @end

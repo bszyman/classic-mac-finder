@@ -53,6 +53,15 @@
     return self;
 }
 
+- (void)setFrame:(NSRect)frame
+{
+    [super setFrame: frame];
+    
+    // Set new Maximize button position
+    NSRect maximizeButtonFrame = NSMakeRect(frame.size.width - 8.0 - 13.0, 4.0, 13.0, 11.0);
+    [[self maximizeButton] setFrame:maximizeButtonFrame];
+}
+
 - (BOOL)windowIsActive
 {
     return windowIsActive;

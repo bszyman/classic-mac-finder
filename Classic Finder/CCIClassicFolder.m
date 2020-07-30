@@ -92,6 +92,23 @@
     if (event.clickCount == 2)
     {
         [CFRFloppyDisk restoreDirectoryProperties:[self directoryModel]];
+        
+        NSSize persistedWindowDimensions = [[self directoryModel] windowDimensions];
+        NSSize safeWindowDimensions = persistedWindowDimensions;
+        
+        if (persistedWindowDimensions.width < 0.0) {
+            safeWindowDimensions = NSMakeSize(500.0, persistedWindowDimensions.height);
+            [[self directoryModel] setWindowDimensions:safeWindowDimensions];
+            [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+        }
+        
+        if (persistedWindowDimensions.height < 0.0) {
+            safeWindowDimensions = NSMakeSize(safeWindowDimensions.width, (safeWindowDimensions.width * 0.6));
+            [[self directoryModel] setWindowDimensions:safeWindowDimensions];
+            [CFRFloppyDisk persistDirectoryProperties:[self directoryModel]];
+        }
+        
+        
         NSPoint persistedWindowPosition = [[self directoryModel] windowPosition];
         
         if ((persistedWindowPosition.x == -1.0) &&
@@ -119,14 +136,14 @@
             // window horizontal position is out of right-side of screen
             if (persistedWindowPosition.x > (mainScreenFrame.size.width) - 30.0) {
                 NSPoint currentWindowPosition = [[self directoryModel] windowPosition];
-                NSPoint newWindowPosition = NSMakePoint(mainScreenFrame.size.width - 500.0, currentWindowPosition.y);
+                NSPoint newWindowPosition = NSMakePoint(mainScreenFrame.size.width - safeWindowDimensions.width, currentWindowPosition.y);
                 [[self directoryModel] setWindowPosition:newWindowPosition];
             }
             
             // window vertical position is below bottom of screen
             if (persistedWindowPosition.y > (mainScreenFrame.size.height) - 30.0) {
                 NSPoint currentWindowPosition = [[self directoryModel] windowPosition];
-                NSPoint newWindowPosition = NSMakePoint(currentWindowPosition.x, mainScreenFrame.size.height - 300.0);
+                NSPoint newWindowPosition = NSMakePoint(currentWindowPosition.x, mainScreenFrame.size.height - safeWindowDimensions.height);
                 [[self directoryModel] setWindowPosition:newWindowPosition];
             }
             
@@ -144,7 +161,7 @@
                 [[self directoryModel] setWindowPosition:newWindowPosition];
             }
         }
-
+        
         [self setOpenItemState];
         
         NSWindowController *finderWindow = [CFRWindowManager.sharedInstance createWindowForDirectory:[self directoryModel]];

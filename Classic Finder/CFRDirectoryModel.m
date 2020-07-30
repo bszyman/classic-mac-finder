@@ -26,6 +26,7 @@
 @synthesize creationDate;
 @synthesize lastModified;
 @synthesize objectPath;
+@synthesize fileSystemNumber;
 
 @synthesize iconPosition;
 @synthesize windowDimensions;
@@ -40,6 +41,7 @@
         [self setCreationDate:[NSDate date]];
         [self setLastModified:[NSDate date]];
         [self setObjectPath:[NSURL URLWithString:@"file:///"]];
+        [self setFileSystemNumber:0];
         [self setIconPosition:NSMakePoint(-1.0, -1.0)];
         [self setWindowDimensions:NSMakeSize(500.0, 300.0)];
         [self setWindowPosition:NSMakePoint(-1.0, -1.0)];
@@ -50,7 +52,7 @@
 
 - (NSString *)uniqueID
 {
-    NSString *unhashedID = [NSString stringWithFormat:@"%f%@", creationDate.timeIntervalSinceReferenceDate, title];
+    NSString *unhashedID = [NSString stringWithFormat:@"%lu%@", fileSystemNumber, title];
     NSString *hashedID = [unhashedID sha1];
     
     return hashedID;

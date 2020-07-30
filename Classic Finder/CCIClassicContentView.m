@@ -20,29 +20,55 @@
 #import "CCIClassicContentView.h"
 #import "CCIApplicationStyles.h"
 
+@interface CCIClassicContentView() {
+    BOOL windowIsResizing;
+    
+    NSBezierPath *windowTopPath;
+    NSBezierPath *windowLeftPath;
+    NSBezierPath *windowRightPath;
+    NSBezierPath *windowBottomPath;
+    NSBezierPath *menuBarBottomPath;
+    NSBezierPath *verticalScrollbarLeftPath;
+    NSBezierPath *horizontalScrollbarTopPath;
+}
+
+@end
+
 @implementation CCIClassicContentView
 
-- (void)drawRect:(NSRect)dirtyRect {
+- (instancetype)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    
+    if (self) {
+        windowIsResizing = NO;
+    }
+    
+    return self;
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
     [super drawRect:dirtyRect];
     
-    NSRect viewFrame = self.frame;
+    if (!windowIsResizing) {
+        NSRect viewFrame = self.frame;
+        [[[CCIApplicationStyles instance] blackColor] setFill];
+        
+        NSRectFill(NSMakeRect(1.0,
+                              1.0,
+                              viewFrame.size.width - 1.0,
+                              viewFrame.size.height - 1.0));
+        //
+        //
+        //        [[[CCIApplicationStyles instance] whiteColor] setFill];
+        //
+        NSRectFill(NSMakeRect(0.0,
+                              0.0,
+                              viewFrame.size.width - 1.0,
+                              viewFrame.size.height - 1.0));
+    }
     
-    [NSColor colorWithCalibratedWhite:0.0
-                                alpha:1.0];
-    
-    NSRectFill(NSMakeRect(1.0,
-                          1.0,
-                          viewFrame.size.width - 1.0,
-                          viewFrame.size.height - 1.0));
-    
-    
-    [NSColor colorWithCalibratedWhite:1.0
-                                alpha:1.0];
-    
-    NSRectFill(NSMakeRect(0.0,
-                          0.0,
-                          viewFrame.size.width - 1.0,
-                          viewFrame.size.height - 1.0));
 }
 
 - (NSRect)contentArea
@@ -58,6 +84,11 @@
 - (BOOL)isFlipped
 {
     return YES;
+}
+
+- (void)setWindowIsResizing:(BOOL)resizing
+{
+    windowIsResizing = resizing;
 }
 
 @end

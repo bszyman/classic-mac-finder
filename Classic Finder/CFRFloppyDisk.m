@@ -42,7 +42,7 @@
     }
 }
 
-+ (void)restoreDirectoryProperties:(CFRDirectoryModel *)directoryModel
++ (BOOL)restoreDirectoryProperties:(CFRDirectoryModel *)directoryModel
 {
     NSString *applicationSupportDirectory = [CFRFileSystemUtils applicationSupportDirectory];
     NSString *archivePath = [NSString stringWithFormat:@"%@/%@.plist", applicationSupportDirectory, directoryModel.uniqueID];
@@ -61,6 +61,8 @@
         [directoryModel setWindowDimensions:NSMakeSize(-1.0, -1.0)];
         [directoryModel setWindowPosition:NSMakePoint(-1.0, -1.0)];
     }
+    
+    return archiveFileExists;
 }
 
 + (void)restoreAppDirectoryProperties:(CFRAppModel *)appDirectoryModel
